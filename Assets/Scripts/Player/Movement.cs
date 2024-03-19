@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     // Variables to control movement
     private float horizontal; // Stores horizontal input
-    private float speed = 16f; // Movement speed
     private float jumpingPower = 16f; // Jumping force
     private bool isRight = true; // Indicates if the player is facing right
 
@@ -14,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb; // Reference to the Rigidbody2D component
     [SerializeField] private Transform groundCheck; // Reference to the ground check object
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
+    [SerializeField] private float speed = 10f; // Movement speed
 
     // Update is called once per frame
     void Update()

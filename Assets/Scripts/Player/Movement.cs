@@ -14,10 +14,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck; // Reference to the ground check object
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float speed = 10f; // Movement speed
+    private void Start()
+    {
+    }
 
     // Update is called once per frame
     void Update()
     {
+        speed = SettingsMenu.GetSpeed();
         // Get horizontal input
         horizontal = Input.GetAxisRaw("Horizontal");
 

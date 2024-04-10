@@ -24,12 +24,7 @@ public class TutorialManager : MonoBehaviour
 
     void Update() {
         if (_currentKey != KeyCode.None && Input.GetKeyDown(_currentKey)) {
-            int newIndex = GetKeyIndex(_currentKey) + 1;
-            HideTutorialStep();
-
-            if (keys.Length > newIndex) {
-                ShowTutorialStep(keys[newIndex].GetKeyCode());
-            }
+            StepCompleted();
         }
     }
 
@@ -38,20 +33,35 @@ public class TutorialManager : MonoBehaviour
 
         Key key = GetKey(keyCode);
 
-        actionImage.sprite = key.GetTexture();
-        actionText.text = key.GetAction();
+        if (key.GetTexture() != null && actionImage != null)
+            actionImage.sprite = key.GetTexture();
+        if (key.GetAction() != null && actionText != null)
+            actionText.text = key.GetAction();
 
         _currentKey = keyCode;
 
         tutorialStepUi.SetActive(true);
-        showTutorialStep.Invoke();
+
+        if (showTutorialStep != null)
+            showTutorialStep.Invoke();
     }
 
     public void HideTutorialStep() {
         _currentKey = KeyCode.None;
-        hideTutorialStep.Invoke();
+
+        if (hideTutorialStep != null)
+            hideTutorialStep.Invoke();
 
         tutorialStepUi.SetActive(false);
+    }
+
+    public void StepCompleted() {
+        int newIndex = GetKeyIndex(_currentKey) + 1;
+        HideTutorialStep();
+
+        if (keys.Length > newIndex) {
+            ShowTutorialStep(keys[newIndex].GetKeyCode());
+        }
     }
 
     private Key GetKey(KeyCode keyCode) {
@@ -81,6 +91,8 @@ public class TutorialManager : MonoBehaviour
     #if UNITY_INCLUDE_TESTS
 
         public void SetKeys(Key[] keys) { this.keys = keys; }
+        public void SetTutorialStepUi (GameObject tutorialStepUi) { this.tutorialStepUi = tutorialStepUi; }
+        public void SetActionText (TMP_Text actionText) { this.actionText = actionText; }
 
     #endif
 }

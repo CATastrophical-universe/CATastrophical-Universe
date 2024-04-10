@@ -77,4 +77,10 @@ public class TutorialManager : MonoBehaviour
 
         return i;
     }
+
+    #if UNITY_INCLUDE_TESTS
+
+        public void SetKeys(Key[] keys) { this.keys = keys; }
+
+    #endif
 }

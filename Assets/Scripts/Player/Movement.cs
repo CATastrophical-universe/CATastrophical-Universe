@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed = SettingsMenu.GetSpeed();
+        //speed = SettingsMenu.GetSpeed();
         // Get horizontal input
         horizontal = Input.GetAxisRaw("Horizontal");
 
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Check if the player is grounded
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         // Use OverlapCircle to check if the groundCheck object overlaps with any objects in the groundLayer within a certain radius
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
@@ -70,4 +70,8 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+#if UNITY_INCLUDE_TESTS
+    public void SetHorizontal(float horizontal) { this.horizontal = horizontal; }
+#endif
 }

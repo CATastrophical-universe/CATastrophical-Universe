@@ -21,9 +21,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed = SettingsMenu.GetSpeed();
+        //speed = SettingsMenu.GetSpeed();
         // Get horizontal input
+        #if !UNITY_INCLUDE_TESTS
         horizontal = Input.GetAxisRaw("Horizontal");
+        #endif
 
         // Check if the jump button is pressed and the player is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -50,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Check if the player is grounded
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         // Use OverlapCircle to check if the groundCheck object overlaps with any objects in the groundLayer within a certain radius
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
@@ -70,4 +72,8 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = localScale;
         }
     }
+
+#if UNITY_INCLUDE_TESTS
+    public void SetGroundLayer(int groundLayer) { this.groundLayer = 1 << groundLayer; }
+#endif
 }

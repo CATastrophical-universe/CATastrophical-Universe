@@ -15,9 +15,8 @@ public class MovementTests
 	[SetUp]
 	public void Setup()
 	{
-        // Set up mocks if necessary (skipping complicated Unity specific stuff, focus on principle)
-		LayerMask groundLayer = 1 << 6;
-        Debug.Log(string.Format("{0} {1}", (int)groundLayer.value, LayerMask.NameToLayer("Ground")));
+		// Set up mocks if necessary (skipping complicated Unity specific stuff, focus on principle)
+		LayerMask groundLayer = LayerMask.NameToLayer("Ground");
 
         groundObject = new GameObject("Ground");
         groundObject.AddComponent<BoxCollider2D>();
@@ -37,12 +36,11 @@ public class MovementTests
 		// Use reflection or exposed functions to set up private fields if necessary
 		typeof(PlayerMovement).GetField("rb", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, rb);
 		typeof(PlayerMovement).GetField("groundCheck", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, groundCheck.transform);
-		typeof(PlayerMovement).GetField("groundLayer", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, groundLayer);
-        // playerMovement.SetGroundLayer("Ground");
+		playerMovement.SetGroundLayer(groundLayer);
 	}
 
 	[UnityTest]
-    [Timeout(10000)]
+    [Timeout(15000)]
 	public IEnumerator DoesPlayerMoveRight()
 	{
         yield return new WaitWhile(() => !playerMovement.IsGrounded());

@@ -73,5 +73,6 @@ public class PlayerMovement : MonoBehaviour
 
 #if UNITY_INCLUDE_TESTS
     public void SetHorizontal(float horizontal) { this.horizontal = horizontal; }
+    public void SetGroundLayer(int groundLayer) { this.groundLayer = 1 << groundLayer; }
 #endif
 }

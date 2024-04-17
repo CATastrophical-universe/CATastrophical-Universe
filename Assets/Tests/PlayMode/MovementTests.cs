@@ -64,6 +64,42 @@ public class MovementTests
 		Assert.IsTrue(playerObject.transform.position.x < 0f);
 	}
 
+    [UnityTest]
+    public IEnumerator DoesPlayerFlipRight()
+    {
+        yield return new WaitWhile(() => !playerMovement.IsGrounded());
+
+        typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, 1f);
+
+        yield return new WaitForFixedUpdate();
+
+        Assert.IsTrue(playerObject.transform.localScale.x > 0f);
+    }
+
+    [UnityTest]
+    public IEnumerator DoesPlayerFlipLeft()
+    {
+        yield return new WaitWhile(() => !playerMovement.IsGrounded());
+
+        typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, -1f);
+
+        yield return new WaitForFixedUpdate();
+
+        Assert.IsTrue(playerObject.transform.localScale.x < 0f);
+    }
+
+    [UnityTest]
+    public IEnumerator IsGroundedWhenJumping()
+    {
+        yield return new WaitWhile(() => !playerMovement.IsGrounded());
+
+        rb.velocity = new Vector2(0f, 10f);
+
+        yield return new WaitWhile(() => rb.velocity.y > 0f);
+
+        Assert.IsFalse(playerMovement.IsGrounded());
+    }
+
 	[TearDown]
 	public void TearDown()
 	{

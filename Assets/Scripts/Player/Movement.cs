@@ -23,7 +23,9 @@ public class PlayerMovement : MonoBehaviour
     {
         //speed = SettingsMenu.GetSpeed();
         // Get horizontal input
+        #if !UNITY_INCLUDE_TESTS
         horizontal = Input.GetAxisRaw("Horizontal");
+        #endif
 
         // Check if the jump button is pressed and the player is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -72,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
 #if UNITY_INCLUDE_TESTS
-    public void SetHorizontal(float horizontal) { this.horizontal = horizontal; }
     public void SetGroundLayer(int groundLayer) { this.groundLayer = 1 << groundLayer; }
 #endif
 }

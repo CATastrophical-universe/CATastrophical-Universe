@@ -45,9 +45,9 @@ public class MovementTests
 	{
         yield return new WaitWhile(() => !playerMovement.IsGrounded());
 
-		playerMovement.SetHorizontal(1f);
+        typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, 1f);
 
-		Debug.Log(playerObject.transform.position.x);
+        yield return new WaitForFixedUpdate();
 
 		Assert.IsTrue(playerObject.transform.position.x > 0f);
 	}
@@ -55,9 +55,11 @@ public class MovementTests
 	[UnityTest]
 	public IEnumerator DoesPlayerMoveLeft()
 	{
-		playerMovement.SetHorizontal(-1f);
+		yield return new WaitWhile(() => !playerMovement.IsGrounded());
 
-		yield return new WaitForSeconds(1);
+        typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, -1f);
+
+        yield return new WaitForFixedUpdate();
 
 		Assert.IsTrue(playerObject.transform.position.x < 0f);
 	}

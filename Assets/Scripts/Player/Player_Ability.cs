@@ -14,11 +14,24 @@ public class Player_Ability : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float tpDistance = 40;
+    public bool unable = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Ability") && !Overlaps())
+        if (Input.GetButtonDown("Ability"))
+        {
+            Teleport(Overlaps());
+        } 
+
+        if (Input.GetButtonUp("Ability"))
+        {
+            ChangeStates();
+        }
+    }
+    public void Teleport(bool overlaps)
+    {
+        if (!overlaps)
         {
             playerTransform.position = new Vector3(playerTransform.position.x,
                 playerTransform.position.y - tpDistance * worldNum, playerTransform.position.z);
@@ -27,19 +40,42 @@ public class Player_Ability : MonoBehaviour
                 cameraTransform.position.y - tpDistance * worldNum, cameraTransform.position.z);
 
             worldNum *= -1;
-        } else if (Input.GetButtonDown("Ability"))
+        } else
+        {
+            unable = true;
+            ChangeStates();
+        }
+        
+    }
+    public void ChangeStates()
+    {
+        if (playerRenderer.color == Color.black && unable)
         {
             playerRenderer.color = Color.red;
-        }
-
-        if (Input.GetButtonUp("Ability"))
+        }else if(unable)
         {
             playerRenderer.color = Color.black;
+            unable = false;
         }
     }
-    private bool Overlaps()
+    public bool Overlaps()
     {
         return Physics2D.OverlapCircle(new Vector3(playerTransform.position.x,
                 playerTransform.position.y - tpDistance * worldNum, playerTransform.position.z), 0.2f, groundLayer);
     }
+
+    #if UNITY_INCLUDE_TESTS
+
+        public void SetPlayerAndCameraTransform(Transform p, Transform c) {
+            playerTransform = p;
+            cameraTransform = c;
+        }
+        public float GetPlayerTransform() { return playerTransform.position.y; }
+        public void SetPlayerRenderer(SpriteRenderer p)
+        {
+            playerRenderer = p;
+        }
+        public Color GetPlayerRenderer() { return playerRenderer.color; }
+
+#endif
 }

@@ -3094,6 +3094,37 @@ MonoBehaviour:
   pauseMenu: {fileID: 1183879226}
   settingsMenu: {fileID: 1775575165}
   isPaused: 0
+--- !u!1 &1047587343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1047587344}
+  m_Layer: 0
+  m_Name: ==Managers==
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1047587344
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047587343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1183879226 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4117838738497256947, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
@@ -4368,5 +4399,6 @@ SceneRoots:
   - {fileID: 627931192512436144}
   - {fileID: 1046033180}
   - {fileID: 1410249553}
-  - {fileID: 1498359416}
   - {fileID: 904933824}
+  - {fileID: 1047587344}
+  - {fileID: 1498359416}

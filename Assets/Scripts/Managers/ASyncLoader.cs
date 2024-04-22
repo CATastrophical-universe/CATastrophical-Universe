@@ -21,6 +21,15 @@ public class ASyncLoader : MonoBehaviour
         StartCoroutine(LoadLevelASync(level));
     }
 
+    public void LoadSavedLevel()
+    {
+        if (!PlayerPrefs.HasKey("Level")) {
+            throw new System.Exception("There is no saved level!");
+        }
+
+        LoadLevelButton(PlayerPrefs.GetString("Level"));
+    }
+
     IEnumerator LoadLevelASync(string level)
     {
         AsyncOperation loadOperation = SceneManager.LoadSceneAsync(level);

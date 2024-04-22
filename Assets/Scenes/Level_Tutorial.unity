@@ -4288,6 +4288,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1046033180}
     m_Modifications:
+    - target: {fileID: 1441670826376793759, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441670826376793759, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7966668770762862363}
+    - target: {fileID: 1441670826376793759, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441670826376793759, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Scripts
+      objectReference: {fileID: 0}
     - target: {fileID: 2831237222249088169, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -4389,6 +4405,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
+--- !u!114 &7966668770762862363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7938481493214469085, guid: f167f0d430bcbdf4e8ad2b1e6c1774eb, type: 3}
+  m_PrefabInstance: {fileID: 7966668770762862362}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372a4a4088fa6ab41abe06951b2713fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

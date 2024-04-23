@@ -49,12 +49,12 @@ public class Player_Ability : MonoBehaviour
     }
     public void ChangeStates()
     {
-        if (playerRenderer.color == Color.black && unable)
+        if (playerRenderer.color == Color.white && unable)
         {
             playerRenderer.color = Color.red;
         }else if(unable)
         {
-            playerRenderer.color = Color.black;
+            playerRenderer.color = Color.white;
             unable = false;
         }
     }

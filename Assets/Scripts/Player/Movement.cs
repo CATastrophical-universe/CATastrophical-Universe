@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float jumpingPower = 16f; // Jumping force
     [SerializeField] private float speed = 10f; // Movement speed
+    public Animator animator;
     private void Start()
     {
     }
@@ -27,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
             horizontal = Input.GetAxisRaw("Horizontal");
         else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
             horizontal = 0f;
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         // Check if the jump button is pressed and the player is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())

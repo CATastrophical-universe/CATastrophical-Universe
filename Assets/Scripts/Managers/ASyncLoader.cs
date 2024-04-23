@@ -27,7 +27,7 @@ public class ASyncLoader : MonoBehaviour
             throw new System.Exception("There is no saved level!");
         }
 
-        LoadLevelButton(PlayerPrefs.GetString("Level"));
+        throw new System.NotImplementedException("PlayerPrefs removed");
     }
 
     IEnumerator LoadLevelASync(string level)

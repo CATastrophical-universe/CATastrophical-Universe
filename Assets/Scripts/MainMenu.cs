@@ -15,23 +15,11 @@ public class MainMenu : MonoBehaviour
     }
 
     public void SaveGame() {
-        Vector3 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-        PlayerPrefs.SetString("Level", SceneManager.GetActiveScene().name);
-        PlayerPrefs.SetFloat("Pos_x", playerPosition.x);
-        PlayerPrefs.SetFloat("Pos_y", playerPosition.y);
-
-        PlayerPrefs.Save();
+        throw new System.NotImplementedException("PlayerPrefs removed");
     }
 
     public void LoadGame() {
-        if (!PlayerPrefs.HasKey("Level")) {
-            return;
-        }
-
-        string level = PlayerPrefs.GetString("Level");
-
-        WaitForLevelToLoad(level);
+        throw new System.NotImplementedException("PlayerPrefs removed");
     }
 
     void SetSavedPlayerState() {

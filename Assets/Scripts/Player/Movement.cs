@@ -23,9 +23,10 @@ public class PlayerMovement : MonoBehaviour
     {
         //speed = SettingsMenu.GetSpeed();
         // Get horizontal input
-        #if !UNITY_INCLUDE_TESTS
-        horizontal = Input.GetAxisRaw("Horizontal");
-        #endif
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+            horizontal = Input.GetAxisRaw("Horizontal");
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            horizontal = 0f;
 
         // Check if the jump button is pressed and the player is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())

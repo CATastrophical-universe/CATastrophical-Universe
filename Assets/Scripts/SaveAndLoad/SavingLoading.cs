@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class SavingLoading : MonoBehaviour
 {
-    private static string SavePath => $"{Application.persistentDataPath}/save.txt";
+    private string SavePath => $"{Application.persistentDataPath}/save.txt";
 
-    public static void Save()
+    public void Save()
     {
         var state = LoadFile();
 
@@ -16,14 +16,14 @@ public class SavingLoading : MonoBehaviour
         SaveFile(state);
     }
 
-    public static void Load()
+    public void Load()
     {
         var state = LoadFile();
 
         RestoreState(state);
     }
 
-    private static void SaveFile(object state)
+    private void SaveFile(object state)
     {
         using (var stream = File.Open(SavePath, FileMode.Create))
         {
@@ -32,7 +32,7 @@ public class SavingLoading : MonoBehaviour
         }
     }
 
-    private static Dictionary<string, object> LoadFile()
+    private Dictionary<string, object> LoadFile()
     {
         if  (!File.Exists(SavePath))
         {
@@ -46,7 +46,7 @@ public class SavingLoading : MonoBehaviour
         }
     }
 
-    private static void CaptureState(Dictionary<string, object> state)
+    private void CaptureState(Dictionary<string, object> state)
     {
         foreach (var saveable in FindObjectsOfType<SaveableEntity>())
         {
@@ -54,7 +54,7 @@ public class SavingLoading : MonoBehaviour
         }
     }
 
-    private static void RestoreState(Dictionary<string, object> state)
+    private void RestoreState(Dictionary<string, object> state)
     {
         foreach (var saveable in FindObjectsOfType<SaveableEntity>())
         {

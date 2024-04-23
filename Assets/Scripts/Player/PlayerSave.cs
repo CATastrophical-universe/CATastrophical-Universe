@@ -9,7 +9,8 @@ public class PlayerSave : MonoBehaviour, ISaveable
     public object CaptureState()
     {
         return new SaveData {
-            Position = transform.position
+            Position_X = transform.position.x,
+            Position_Y = transform.position.y
         };
     }
 
@@ -17,12 +18,13 @@ public class PlayerSave : MonoBehaviour, ISaveable
     {
         var saveData = (SaveData)state;
 
-        transform.position = saveData.Position;
+        transform.position = new Vector3(saveData.Position_X, saveData.Position_Y, 0f);
     }
 
     [Serializable]
     private struct SaveData
     {
-        public Vector3 Position;
+        public float Position_X;
+        public float Position_Y;
     }
 }

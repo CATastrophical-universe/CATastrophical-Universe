@@ -23,11 +23,13 @@ public class ASyncLoader : MonoBehaviour
 
     public void LoadSavedLevel()
     {
-        if (!PlayerPrefs.HasKey("Level")) {
+        string level = SaveLevel.Load();
+        
+        if (level == null) {
             throw new System.Exception("There is no saved level!");
         }
 
-        throw new System.NotImplementedException("PlayerPrefs removed");
+        StartCoroutine(LoadLevelASync(level));
     }
 
     IEnumerator LoadLevelASync(string level)

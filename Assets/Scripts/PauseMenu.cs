@@ -27,6 +27,9 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+        if(!pauseMenu.active){
+            ResumeGame();
+        }
     }
 
     public void PauseGame()

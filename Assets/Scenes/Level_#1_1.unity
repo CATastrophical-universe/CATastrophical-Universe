@@ -58397,6 +58397,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   tpDistance: 40
+  unable: 0
 --- !u!1 &743745068
 GameObject:
   m_ObjectHideFlags: 0

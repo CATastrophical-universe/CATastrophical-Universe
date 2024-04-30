@@ -16,6 +16,10 @@ public class Player_Ability : MonoBehaviour
     [SerializeField] private float tpDistance = 40;
     public bool unable = false;
 
+    // Events for teleport
+    public delegate void TeleportEventHandler(int worldNum);
+    public static event TeleportEventHandler OnTeleport;
+
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +44,8 @@ public class Player_Ability : MonoBehaviour
                 cameraTransform.position.y - tpDistance * worldNum, cameraTransform.position.z);
 
             worldNum *= -1;
+
+            OnTeleport?.Invoke(worldNum);
         } else
         {
             unable = true;

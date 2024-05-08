@@ -11,6 +11,8 @@
 
 > [GitHub Dekstop](https://desktop.github.com)
 
+> [EasyRetro](https://easyretro.io/publicboard/BbWE0l7hNsXrfKLTkc6C2SQk0YF3/104aa5b6-04f4-4e71-894f-2ea1e19ef9f3?sort=votes)
+
 ### Atlassian
 
 <ol>

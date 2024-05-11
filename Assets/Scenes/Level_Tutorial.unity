@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 65468998}
   m_Layer: 0
   m_Name: SpaceCollider (1)
-  m_TagString: ActionTrigger
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5054,7 +5054,7 @@ GameObject:
   - component: {fileID: 632772870}
   m_Layer: 0
   m_Name: SpaceCollider (2)
-  m_TagString: ActionTrigger
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31897,7 +31897,7 @@ GameObject:
   - component: {fileID: 1530093596}
   m_Layer: 0
   m_Name: SpaceCollider
-  m_TagString: ActionTrigger
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - SaveLoad
+  - ActionTrigger
   layers:
   - Default
   - TransparentFX

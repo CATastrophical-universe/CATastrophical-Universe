@@ -24,6 +24,8 @@ public class TutorialManager : MonoBehaviour
     private KeyCode _currentKey = KeyCode.None;
 
     void Start() {
+        KeyActionTrigger.ShowTutorialStep += ShowTutorialStep;
+
         if (keys.Length > 0) {
             ShowTutorialStep(keys[0].GetKeyCode());
         }
@@ -66,7 +68,7 @@ public class TutorialManager : MonoBehaviour
         int newIndex = GetKeyIndex(_currentKey) + 1;
         HideTutorialStep();
 
-        if (keys.Length > newIndex) {
+        if (keys.Length > newIndex && !keys[newIndex].GetShouldNotDisplayOnDefault()) {
             ShowTutorialStep(keys[newIndex].GetKeyCode());
         }
     }

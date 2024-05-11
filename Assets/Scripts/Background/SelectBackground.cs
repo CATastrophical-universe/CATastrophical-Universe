@@ -20,7 +20,10 @@ public class SelectBackground : MonoBehaviour
 
     void HandleTeleportEvent(int worldNum)
     {
-        background1.SetActive(worldNum == 1);
-        background2.SetActive(worldNum == -1);
+        if (background1)
+            background1.SetActive(worldNum == 1);
+
+        if (background2)
+            background2.SetActive(worldNum == -1);
     }
 }

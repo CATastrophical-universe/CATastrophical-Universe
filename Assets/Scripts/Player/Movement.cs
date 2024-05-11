@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float jumpingPower = 16f; // Jumping force
     [SerializeField] private float speed = 10f; // Movement speed
+
+    [SerializeField] ParticleSystem dust;
     private void Start()
     {
     }
@@ -23,16 +25,21 @@ public class PlayerMovement : MonoBehaviour
     {
         //speed = SettingsMenu.GetSpeed();
         // Get horizontal input
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
             horizontal = Input.GetAxisRaw("Horizontal");
-        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            CreateDust();
+        }
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) {
             horizontal = 0f;
+            RemoveDust();
+        }
 
         // Check if the jump button is pressed and the player is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             // Apply upward force for jumping
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            RemoveDust();
         }
 
         // If jump button is released and player is still going up, reduce the upward velocity
@@ -71,6 +78,20 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+
+            CreateDust();
+        }
+    }
+
+    void CreateDust() {
+        if (!dust.isPlaying && IsGrounded()) {
+            dust.Play();
+        }
+    }
+
+    void RemoveDust() {
+        if (dust.isPlaying) {
+            dust.Stop();
         }
     }
 

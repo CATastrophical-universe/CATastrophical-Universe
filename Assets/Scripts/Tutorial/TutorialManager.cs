@@ -6,10 +6,18 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
+    [Header("Objects")]
     [SerializeField] private GameObject tutorialStepUi;
     [SerializeField] private Image actionImage;
     [SerializeField] private TMP_Text actionText;
+
+    [Header("Cooldown")]
+    [SerializeField] private int stepCooldown;
+
+    [Header("Keys")]
     [SerializeField] private Key[] keys;
+
+    [Header("Events")]
     [SerializeField] private UnityEvent showTutorialStep;
     [SerializeField] private UnityEvent hideTutorialStep;
 

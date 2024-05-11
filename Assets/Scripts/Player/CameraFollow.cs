@@ -28,7 +28,6 @@ public class CameraFollow : MonoBehaviour
         Vector3 targetPosition = target.position + offset + new Vector3(0f, offsetY, 0f);
 
         if (targetPosition.x - cameraHalfSize < min.position.x) {
-            Debug.Log("Hit Min border");
             targetPosition.x = min.position.x + cameraHalfSize;
         }
         else if (targetPosition.x + cameraHalfSize > max.position.x) {

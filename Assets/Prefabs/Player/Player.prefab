@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2305747908663836965}
   - component: {fileID: 5654630451069335298}
-  - component: {fileID: 7982969681994550132}
+  - component: {fileID: 429109950143275174}
   - component: {fileID: 6287459750274406041}
   - component: {fileID: 4424598967752121762}
   - component: {fileID: 6585471426786364476}
@@ -90,8 +90,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &7982969681994550132
-BoxCollider2D:
+--- !u!60 &429109950143275174
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -121,7 +121,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,9 +132,17 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.3, y: 0.5}
+      - {x: -0.5, y: 0.3}
+      - {x: -0.5, y: -0.3}
+      - {x: -0.3, y: -0.5}
+      - {x: 0.3, y: -0.5}
+      - {x: 0.5, y: -0.3}
+      - {x: 0.5, y: 0.3}
+      - {x: 0.3, y: 0.5}
+  m_UseDelaunayMesh: 0
 --- !u!50 &6287459750274406041
 Rigidbody2D:
   serializedVersion: 4
@@ -179,7 +187,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  jumpingPower: 16
+  jumpingPower: 14
   speed: 16
 --- !u!114 &6585471426786364476
 MonoBehaviour:

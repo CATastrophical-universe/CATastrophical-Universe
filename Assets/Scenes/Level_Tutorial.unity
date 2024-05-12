@@ -676,7 +676,7 @@ GameObject:
   - component: {fileID: 417570018}
   m_Layer: 6
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: GroundGrass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5457,7 +5457,7 @@ Transform:
   m_GameObject: {fileID: 645473490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.0338, y: -40.439983, z: -0.07146051}
+  m_LocalPosition: {x: -35.0338, y: -40.439983, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5532,7 +5532,7 @@ GameObject:
   - component: {fileID: 748194769}
   m_Layer: 6
   m_Name: Ground (1)
-  m_TagString: Untagged
+  m_TagString: GroundBrick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5630,7 +5630,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -14822,9 +14822,9 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.03333336, y: 0.03333336, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -32943,7 +32943,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -33004,14 +33004,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848287412}
   serializedVersion: 8
-  lengthInSec: 2
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
@@ -38359,6 +38359,50 @@ PrefabInstance:
       propertyPath: dust
       value: 
       objectReference: {fileID: 1848287415}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[0].tag
+      value: GroundGrass
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[1].tag
+      value: GroundBrick
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[0].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[0].color.b
+      value: 0.17530021
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[0].color.g
+      value: 0.6132076
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[0].color.r
+      value: 0.078097194
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[1].color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[1].color.b
+      value: 0.2735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[1].color.g
+      value: 0.21065001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: tagColorMappings.Array.data[1].color.r
+      value: 0.18195978
+      objectReference: {fileID: 0}
     - target: {fileID: 6585471426786364476, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
       propertyPath: cameraTransform
       value: 

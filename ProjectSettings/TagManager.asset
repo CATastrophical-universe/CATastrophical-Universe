@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SaveLoad
+  - GroundGrass
+  - GroundBrick
   layers:
   - Default
   - TransparentFX

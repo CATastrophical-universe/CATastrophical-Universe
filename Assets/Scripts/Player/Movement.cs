@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,8 +15,28 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float jumpingPower = 16f; // Jumping force
     [SerializeField] private float speed = 10f; // Movement speed
-    private void Start()
+
+    [Header("Particles")]
+    [SerializeField] ParticleSystem dust;
+    public List<TagColorMapping> tagColorMappings;
+    private Dictionary<string, Color> tagToColorMap;
+    private ParticleSystem.ColorOverLifetimeModule colorOverLifetimeModule;
+    
+    [Serializable]
+    public class TagColorMapping
     {
+        public string tag;
+        public Color color;
+    }
+
+    void Start()
+    {
+        tagToColorMap = new Dictionary<string, Color>();
+
+        foreach (var mapping in tagColorMappings)
+            tagToColorMap[mapping.tag] = mapping.color;
+
+        colorOverLifetimeModule = dust.colorOverLifetime;
     }
 
     // Update is called once per frame
@@ -23,16 +44,21 @@ public class PlayerMovement : MonoBehaviour
     {
         //speed = SettingsMenu.GetSpeed();
         // Get horizontal input
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow)) {
             horizontal = Input.GetAxisRaw("Horizontal");
-        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+            CreateDust();
+        }
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow)) {
             horizontal = 0f;
+            RemoveDust();
+        }
 
         // Check if the jump button is pressed and the player is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             // Apply upward force for jumping
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+            RemoveDust();
         }
 
         // If jump button is released and player is still going up, reduce the upward velocity
@@ -71,7 +97,37 @@ public class PlayerMovement : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+
+            CreateDust();
         }
+    }
+
+    void CreateDust() {
+        if (!dust.isPlaying && IsGrounded()) {
+            dust.Play();
+        }
+    }
+
+    void RemoveDust() {
+        if (dust.isPlaying) {
+            dust.Stop();
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (tagToColorMap.ContainsKey(collision.gameObject.tag))
+        {
+            ModifyColorOverLifetime(tagToColorMap[collision.gameObject.tag]);
+        }
+    }
+
+    void ModifyColorOverLifetime(Color color) {
+        Gradient gradient = new Gradient();
+
+        gradient.SetKeys(new GradientColorKey[] { new GradientColorKey(color, 1f), new GradientColorKey(color, 1f) }, new GradientAlphaKey[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(0f, 1f) });
+
+        colorOverLifetimeModule.color = gradient;
     }
 
 #if UNITY_INCLUDE_TESTS

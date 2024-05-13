@@ -42,7 +42,8 @@ public class EndToEndTests
     }
 
     [UnityTest]
-    public IEnumerator Walk_Player_To_The_Finish_Points() {
+    [Timeout(15000)]
+    public IEnumerator Make_Sure_Player_Does_Not_Fall_Off_The_Map() {
         yield return new WaitWhile(() => sceneLoaded == false);
 
         SetupReferences();
@@ -65,10 +66,49 @@ public class EndToEndTests
 
         // Teleport
         playerAbility.Teleport(playerAbility.Overlaps());
-        yield return new WaitWhile(() => player.transform.position.x < 18f);
+        yield return new WaitWhile(() => player.transform.position.x < 34f);
 
+        // Teleport
+        playerAbility.Teleport(playerAbility.Overlaps());
+        yield return new WaitWhile(() => player.transform.position.x < 54f);
+
+        // Teleport
+        playerAbility.Teleport(playerAbility.Overlaps());
+        yield return new WaitWhile(() => player.transform.position.x < 60f);
+
+        playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 12f);
+        yield return new WaitForSeconds(0.5f);
+        playerAbility.Teleport(playerAbility.Overlaps());
+        yield return new WaitForSeconds(5);
+
+        Assert.GreaterOrEqual(player.transform.position.y, -50);
+    }
+
+    [UnityTest]
+    [Timeout(15000)]
+    public IEnumerator Walk_Player_To_The_Finish_Point_Through_Whole_Level() {
+        yield return new WaitWhile(() => sceneLoaded == false);
+
+        SetupReferences();
+
+        // Check if references are setup
+        Assert.IsNotNull(player);
+        Assert.IsNotNull(playerMovement);
+        Assert.IsNotNull(playerAbility);
+        Assert.IsNotNull(playerRigidbody);
+
+        // Move player to left
+        typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, -1f);
+        yield return new WaitWhile(() => player.transform.position.x > -7f);
+        // Move player to left
+        typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, 1f);
+        yield return new WaitWhile(() => player.transform.position.x < 1.5f);
         // Jump
-        // playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 8f);
+        playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 12f);
+        yield return new WaitWhile(() => player.transform.position.x < 16f);
+
+        // Teleport
+        playerAbility.Teleport(playerAbility.Overlaps());
         yield return new WaitWhile(() => player.transform.position.x < 34f);
 
         // Teleport

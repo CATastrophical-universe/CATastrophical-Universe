@@ -41,7 +41,46 @@ public class EndToEndTests
         }
     }
 
-    [UnityTest]
+	[UnityTest]
+	[Timeout(15000)]
+	public IEnumerator Make_Sure_Player_Can_Not_Jump_Walls()
+	{
+		yield return new WaitWhile(() => sceneLoaded == false);
+
+		SetupReferences();
+
+		// Check if references are setup
+		Assert.IsNotNull(player);
+		Assert.IsNotNull(playerMovement);
+		Assert.IsNotNull(playerAbility);
+		Assert.IsNotNull(playerRigidbody);
+
+		// Move player to left
+		typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, -1f);
+		yield return new WaitWhile(() => player.transform.position.x > -7f);
+		// Move player to left
+		typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, 1f);
+		yield return new WaitWhile(() => player.transform.position.x < 1f);
+		// Jump
+		playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 12f);
+		yield return new WaitWhile(() => player.transform.position.x < 16f);
+
+		// Push down
+		playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -2f);
+		yield return new WaitWhile(() => player.transform.position.y > -2f);
+
+		// Try jump above wall
+        for (int i = 0; i < 4; i++)
+        {
+		    playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 10f);
+            yield return new WaitForSeconds(0.2f);
+		    yield return new WaitWhile(() => player.transform.position.y > -2f);
+        }
+
+        Assert.Less(player.transform.position.x, 18f);
+	}
+
+	[UnityTest]
     [Timeout(15000)]
     public IEnumerator Make_Sure_Player_Can_Not_Teleport_Into_Walls()
     {

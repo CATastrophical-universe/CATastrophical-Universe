@@ -43,6 +43,40 @@ public class EndToEndTests
 
     [UnityTest]
     [Timeout(15000)]
+    public IEnumerator Make_Sure_Player_Can_Not_Teleport_Into_Walls()
+    {
+		yield return new WaitWhile(() => sceneLoaded == false);
+
+		SetupReferences();
+
+		// Check if references are setup
+		Assert.IsNotNull(player);
+		Assert.IsNotNull(playerMovement);
+		Assert.IsNotNull(playerAbility);
+		Assert.IsNotNull(playerRigidbody);
+
+		// Move player to left
+		typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, -1f);
+		yield return new WaitWhile(() => player.transform.position.x > -7f);
+		// Move player to left
+		typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, 1f);
+		yield return new WaitWhile(() => player.transform.position.x < 1f);
+		// Jump
+		playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, 12f);
+		yield return new WaitWhile(() => player.transform.position.x < 16f);
+
+        // Push down
+		playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -2f);
+		yield return new WaitWhile(() => player.transform.position.y > -2f);
+
+		playerAbility.Teleport(playerAbility.Overlaps());
+		yield return new WaitWhile(() => player.transform.position.x < 18.5f);
+
+        Assert.IsTrue(playerAbility.Overlaps());
+	}
+
+	[UnityTest]
+    [Timeout(15000)]
     public IEnumerator Make_Sure_Player_Does_Not_Fall_Off_The_Map() {
         yield return new WaitWhile(() => sceneLoaded == false);
 

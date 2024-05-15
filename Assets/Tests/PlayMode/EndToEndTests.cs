@@ -21,6 +21,19 @@ public class EndToEndTests
         SceneManager.LoadScene("Level_Tutorial");
     }
 
+    [TearDown]
+    public void TearDown() {
+        var worldNum = typeof(Player_Ability).GetField("worldNum", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(playerAbility);
+
+        if ((int)worldNum == -1) {
+            playerAbility.Teleport(false);
+        }
+
+        typeof(PlayerMovement).GetField("horizontal", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(playerMovement, 0f);
+        playerRigidbody.velocity = new Vector2(0f, 0f);
+        player.transform.position = new Vector3(-2f, 3f, 0f);
+    }
+
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         sceneLoaded = true;
     }

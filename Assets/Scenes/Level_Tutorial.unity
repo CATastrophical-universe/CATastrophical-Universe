@@ -38304,12 +38304,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 429109950143275174, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
-      propertyPath: m_UsedByEffector
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 429109950143275174, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
       propertyPath: m_UsedByComposite
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1062203817443487095, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
       propertyPath: m_Name
@@ -38403,6 +38399,14 @@ PrefabInstance:
       propertyPath: tagColorMappings.Array.data[1].color.r
       value: 0.18195978
       objectReference: {fileID: 0}
+    - target: {fileID: 6287459750274406041, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6287459750274406041, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a42d5a82903e59049b673f825a84defa, type: 2}
     - target: {fileID: 6585471426786364476, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
       propertyPath: cameraTransform
       value: 
@@ -38420,6 +38424,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1062203817443487095, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2107804688839249074}
+    - targetCorrespondingSourceObject: {fileID: 1062203817443487095, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2107804688839249080}
   m_SourcePrefab: {fileID: 100100000, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
 --- !u!1 &2107804688839249072 stripped
 GameObject:
@@ -38451,6 +38458,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ecf61bcebdb2048aa5ca24d28433e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!60 &2107804688839249078 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 429109950143275174, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+  m_PrefabInstance: {fileID: 2107804688839249071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!66 &2107804688839249080
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107804688839249072}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 2107804688839249078}
+    m_ColliderPaths:
+    - - X: 5000000
+        Y: -3000000
+      - X: 5000000
+        Y: 3000000
+      - X: 3000000
+        Y: 5000000
+      - X: -3000000
+        Y: 5000000
+      - X: -5000000
+        Y: 3000000
+      - X: -5000000
+        Y: -3000000
+      - X: -3000000
+        Y: -5000000
+      - X: 3000000
+        Y: -5000000
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 0.2999892, y: -0.5}
+      - {x: 0.5, y: -0.2999892}
+      - {x: 0.4999924, y: 0.3000076}
+      - {x: 0.2999892, y: 0.5}
+      - {x: -0.3000076, y: 0.4999924}
+      - {x: -0.5, y: 0.2999892}
+      - {x: -0.4999924, y: -0.3000076}
+      - {x: -0.2999892, y: -0.5}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 2107804688839249072}
 --- !u!1001 &7779437554045580629
 PrefabInstance:
   m_ObjectHideFlags: 0

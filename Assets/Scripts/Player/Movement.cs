@@ -14,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float jumpingPower = 16f; // Jumping force
     [SerializeField] private float speed = 10f; // Movement speed
-    public Animator animator;
+    [SerializeField] private Animator animator;
+    private float prevY = 0;
     private void Start()
     {
     }
@@ -41,8 +42,15 @@ public class PlayerMovement : MonoBehaviour
         // If jump button is released and player is still going up, reduce the upward velocity
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
         }
+
+        animator.SetFloat("UpSpeed", rb.velocity.y);
+
+        prevY = rb.transform.position.y;
+
+        animator.SetBool("Grounded", IsGrounded());
+
 
         // Flip the player's direction if necessary
         Flip();

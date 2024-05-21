@@ -15,10 +15,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpingPower = 16f; // Jumping force
     [SerializeField] private float speed = 10f; // Movement speed
     [SerializeField] private Animator animator;
-    private float prevY = 0;
-    private void Start()
-    {
-    }
 
     // Update is called once per frame
     void Update()
@@ -46,8 +42,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         animator.SetFloat("UpSpeed", rb.velocity.y);
-
-        prevY = rb.transform.position.y;
 
         animator.SetBool("Grounded", IsGrounded());
 

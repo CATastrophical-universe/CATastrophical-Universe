@@ -14,6 +14,7 @@ public class Player_Ability : MonoBehaviour
     [SerializeField] private Transform cameraTransform;
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float tpDistance = 40;
+    [SerializeField] private Animator animator;
     public bool unable = false;
 
     // Events for teleport
@@ -23,25 +24,34 @@ public class Player_Ability : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetInteger("WorldNum", worldNum);
+
         if (Input.GetButtonDown("Ability"))
         {
+            /*animator.SetBool("Teleporting", true);*/
             Teleport(Overlaps());
+            
         } 
 
         if (Input.GetButtonUp("Ability"))
         {
             ChangeStates();
+            animator.SetBool("Teleporting", false);
         }
     }
     public void Teleport(bool overlaps)
     {
         if (!overlaps)
         {
+            animator.SetBool("Teleporting", true);
+
             playerTransform.position = new Vector3(playerTransform.position.x,
                 playerTransform.position.y - tpDistance * worldNum, playerTransform.position.z);
 
             cameraTransform.position = new Vector3(cameraTransform.position.x,
                 cameraTransform.position.y - tpDistance * worldNum, cameraTransform.position.z);
+
+            /*animator.SetBool("Teleporting", false);*/
 
             worldNum *= -1;
 
@@ -55,12 +65,12 @@ public class Player_Ability : MonoBehaviour
     }
     public void ChangeStates()
     {
-        if (playerRenderer.color == Color.black && unable)
+        if (playerRenderer.color == Color.white && unable)
         {
             playerRenderer.color = Color.red;
         }else if(unable)
         {
-            playerRenderer.color = Color.black;
+            playerRenderer.color = Color.white;
             unable = false;
         }
     }

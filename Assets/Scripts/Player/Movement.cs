@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer; // Layer mask to define what is considered ground
     [SerializeField] private float jumpingPower = 16f; // Jumping force
     [SerializeField] private float speed = 10f; // Movement speed
+    [SerializeField] private Animator animator;
 
     [Header("Particles")]
     [SerializeField] ParticleSystem dust;
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         colorOverLifetimeModule = dust.colorOverLifetime;
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -53,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
             RemoveDust();
         }
 
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+
         // Check if the jump button is pressed and the player is grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -64,8 +68,13 @@ public class PlayerMovement : MonoBehaviour
         // If jump button is released and player is still going up, reduce the upward velocity
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.3f);
         }
+
+        animator.SetFloat("UpSpeed", rb.velocity.y);
+
+        animator.SetBool("Grounded", IsGrounded());
+
 
         // Flip the player's direction if necessary
         Flip();

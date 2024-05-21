@@ -24,6 +24,7 @@ public class Player_Ability : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("Teleporting", false);
         animator.SetInteger("WorldNum", worldNum);
 
         if (Input.GetButtonDown("Ability"))
@@ -36,8 +37,9 @@ public class Player_Ability : MonoBehaviour
         if (Input.GetButtonUp("Ability"))
         {
             ChangeStates();
-            animator.SetBool("Teleporting", false);
+            
         }
+        
     }
     public void Teleport(bool overlaps)
     {

@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     public List<TagColorMapping> tagColorMappings;
     private Dictionary<string, Color> tagToColorMap;
     private ParticleSystem.ColorOverLifetimeModule colorOverLifetimeModule;
+
+    public CoinManager cm;
     
     [Serializable]
     public class TagColorMapping
@@ -142,4 +144,13 @@ public class PlayerMovement : MonoBehaviour
 #if UNITY_INCLUDE_TESTS
     public void SetGroundLayer(int groundLayer) { this.groundLayer = 1 << groundLayer; }
 #endif
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Fish"))
+        {
+            Destroy(other.gameObject);
+            cm.CoinCount++;
+        }
+    }
 }

@@ -520,6 +520,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: torch-A-01 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 407241519
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5422,6 +5430,14 @@ PrefabInstance:
     - target: {fileID: 2468944340033366576, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
       propertyPath: m_Name
       value: torch-A-01 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 407241519
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -37381,6 +37397,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: torch-A-01 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 407241519
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37847,6 +37871,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: torch-A-01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 407241519
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38151,6 +38183,14 @@ PrefabInstance:
     - target: {fileID: 2468944340033366576, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
       propertyPath: m_Name
       value: torch-A-01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 407241519
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -39453,6 +39493,14 @@ PrefabInstance:
     - target: {fileID: 2468944340033366576, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
       propertyPath: m_Name
       value: torch-A-01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5613588128050920694, guid: bb3f2ff26b95fa94da3c942847835cc4, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[1]
+      value: 407241519
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

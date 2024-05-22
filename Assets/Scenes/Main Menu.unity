@@ -4129,6 +4129,7 @@ MonoBehaviour:
   loadingScreen: {fileID: 1595918596}
   mainMenu: {fileID: 248073916}
   loadingSlider: {fileID: 1249779982}
+  defaultSceneName: Level_Tutorial
 --- !u!4 &1573006477
 Transform:
   m_ObjectHideFlags: 0

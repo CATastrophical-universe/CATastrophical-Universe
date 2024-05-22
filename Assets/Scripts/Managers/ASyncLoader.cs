@@ -13,6 +13,9 @@ public class ASyncLoader : MonoBehaviour
     [Header("Slider")]
     [SerializeField] private Slider loadingSlider;
 
+    [Header("Default Level")]
+    [SerializeField] string defaultSceneName;
+
     public void LoadLevelButton(string level)
     {
         mainMenu.SetActive(false);
@@ -26,7 +29,7 @@ public class ASyncLoader : MonoBehaviour
         string level = SaveLevel.Load();
         
         if (level == null) {
-            throw new System.Exception("There is no saved level!");
+            level = defaultSceneName;
         }
 
         StartCoroutine(LoadLevelASync(level));

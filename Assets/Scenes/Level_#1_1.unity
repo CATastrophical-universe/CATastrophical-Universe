@@ -58215,6 +58215,8 @@ MonoBehaviour:
   jumpingPower: 9
   speed: 8
   animator: {fileID: 657836739}
+  dust: {fileID: 0}
+  tagColorMappings: []
 --- !u!50 &657836733
 Rigidbody2D:
   serializedVersion: 4
@@ -58667,6 +58669,14 @@ PrefabInstance:
     - target: {fileID: 3784208991680294136, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4124599823574529262, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4124599823574529262, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 4424598967752121762, guid: e89e0dfa8d344204397aff6f368a630f, type: 3}
       propertyPath: animator
